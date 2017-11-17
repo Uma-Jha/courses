@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'course_app/style.css' %}">
+ <title>Courses</title>
+</head>
+<body>
+	<h3>Are you sure you want to delete the following course?</h3>
+	<p><label>Name:</label><label class="space">{{course.name}}</label></p>
+	<p><label>Description:</label><label class="space">{{course.desc}}</label></p>
+	<form class="display" action="/" method="post">
+		{% csrf_token %}
+		<input type="submit" class="btn btn-default" value="No">
+	</form>
+	<form class="display" action="/destroy/" method="post">
+		{% csrf_token %}
+		<input type="submit" class="btn btn-danger" value="Yes! I want to delete this">
+	</form>
+</body>
+</html>
